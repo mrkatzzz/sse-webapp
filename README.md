@@ -35,7 +35,7 @@ CREATE TABLE users (
     lockout_until DATETIME DEFAULT NULL,
     google_2fa_secret VARCHAR(32) DEFAULT NULL
 );
-
+```
 # 🔐 Authentication System with 2FA
 
 ## 📂 File Structure
