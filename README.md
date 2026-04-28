@@ -1,28 +1,40 @@
 # Secure Authentication System (Bcrypt + TOTP 2FA)
 
-This project demonstrates a secure multi-stage authentication flow including password hashing, automated account lockout (rate limiting), and Two-Factor Authentication (TOTP).
+This repository contains a robust PHP-based authentication system developed as part of a cybersecurity lab assignment. It demonstrates a multi-layered defense strategy including secure hashing, automated rate limiting, and Two-Factor Authentication (2FA).
 
-## 🛠 Database Setup
+---
 
-Run the following SQL commands in **phpMyAdmin** or your MySQL terminal to set up the environment:
+## 🛠 Environment Setup (XAMPP)
+
+This project is designed to run on a local **XAMPP** server. Follow these steps to deploy the files:
+
+1. **Local Directory**: Create a folder named `cyber_lab` inside your XAMPP `htdocs` directory:
+   - **Linux**: `/opt/lampp/htdocs/cyber_lab/`
+   - **Windows**: `C:\xampp\htdocs\cyber_lab\`
+2. **File Deployment**: Paste all `.php` files from this repository into the `cyber_lab` folder.
+3. **Services**: Ensure **Apache** and **MySQL** are running via the XAMPP Control Panel.
+4. **Access**: Navigate to `http://localhost/cyber_lab/register.php` to begin.
+
+---
+
+## 🗄 Database Initialization
+
+Execute the following SQL commands in **phpMyAdmin** (`http://localhost/phpmyadmin`) to set up the backend:
 
 ```sql
--- 1. Create Database
+-- 1. Initialize Database
 CREATE DATABASE lab_assignment;
 USE lab_assignment;
 
--- 2. Create Users Table
+-- 2. Create Users Table with Security Columns
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     login_attempts INT DEFAULT 0,
-    lockout_until DATETIME DEFAULT NULL
+    lockout_until DATETIME DEFAULT NULL,
+    google_2fa_secret VARCHAR(32) DEFAULT NULL
 );
-
--- 3. Alter Table for 2FA Support
-ALTER TABLE users ADD COLUMN google_2fa_secret VARCHAR(32) DEFAULT NULL;
-```
 
 # 🔐 Authentication System with 2FA
 
