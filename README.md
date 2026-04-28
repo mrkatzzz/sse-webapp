@@ -35,6 +35,9 @@ CREATE TABLE users (
     lockout_until DATETIME DEFAULT NULL,
     google_2fa_secret VARCHAR(32) DEFAULT NULL
 );
+
+-- 3. Alter Table for 2FA Support
+ALTER TABLE users ADD COLUMN google_2fa_secret VARCHAR(32) DEFAULT NULL;
 ```
 # 🔐 Authentication System with 2FA
 
