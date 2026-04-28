@@ -1,6 +1,6 @@
 # Secure Authentication System (Bcrypt + TOTP 2FA)
 
-This repository contains a robust PHP-based authentication system developed as part of a cybersecurity lab assignment. It demonstrates a multi-layered defense strategy including secure hashing, automated rate limiting, and Two-Factor Authentication (2FA).
+This repository contains a minimal PHP-based authentication system developed as part of a cybersecurity lab assignment. It demonstrates a multi-layered defense strategy including secure hashing, automated rate limiting, and Two-Factor Authentication (2FA).
 
 ---
 
